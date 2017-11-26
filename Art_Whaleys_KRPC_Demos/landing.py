@@ -68,7 +68,7 @@ def suicide_burn(conn, vessel, autowarp = True):
         '''
         Performs a 'Suicide Burn' using the calculator class.
         '''
-        print "Calculating Suicide Burn..."
+        print("Calculating Suicide Burn...")
         telem = vessel.flight(vessel.orbit.body.reference_frame)
         vessel.control.speed_mode = vessel.control.speed_mode.surface
         rf = vessel.orbit.body.reference_frame
@@ -124,7 +124,7 @@ def final_descent(v):
         current altitude above terrain - so at 200m would try to descend at 20m/s and at 10 m/s locks
         descent speed to 1m/s.
         '''
-        print "final descent"
+        print ("final descent")
         telem = v.flight(v.orbit.body.reference_frame)
         v.control.speed_mode = v.control.speed_mode.surface
         ap = v.auto_pilot

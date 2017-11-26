@@ -25,7 +25,7 @@ from node_executor import execute_next_node
 ##    This function is not called when file is imported into YOUR scripts.
 ###############################################################################
 def main():
-    conn=krpc.connect()
+    conn=krpc.connect('Rendezvous')
     sc = conn.space_center
     v = conn.space_center.active_vessel
     t = conn.space_center.target_vessel
@@ -54,8 +54,8 @@ def match_planes(conn):
 
     #figure out if AN or DN is soonest.   Since Script assumes circular orbits
     #it doesn't worry about which is highest (cheapest burn).
-    ut_an = v.orbit.ut_at_true_anomaly(v.orbit.true_anomaly_an(t))
-    ut_dn = v.orbit.ut_at_true_anomaly(v.orbit.true_anomaly_dn(t))
+    ut_an = v.orbit.ut_at_true_anomaly(v.orbit.true_anomaly_at_an(t))
+    ut_dn = v.orbit.ut_at_true_anomaly(v.orbit.true_anomaly_at_dn(t))
     if ut_an < ut_dn:
         ascending = True
         time = ut_an
